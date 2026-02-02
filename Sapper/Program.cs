@@ -1,13 +1,6 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
-namespace ConsoleApp_Study
+namespace Sapper
 {
     internal class Program
     {
@@ -16,10 +9,9 @@ namespace ConsoleApp_Study
             Console.InputEncoding = Encoding.Unicode;
             Console.OutputEncoding = Encoding.Unicode;
 
-
             Random random = new Random();
 
-            bool crash = true;
+            bool crash;
 
             string reset = "y";
 
@@ -67,7 +59,7 @@ namespace ConsoleApp_Study
                 {
                     for (int y = 0; y < 8; y++)
                     {
-                        if (batleField[x, y] == -1) continue; // если мина, не считаем
+                        if (batleField[x, y] == -1) continue;
 
                         int count = 0;
 
@@ -75,8 +67,7 @@ namespace ConsoleApp_Study
                         {
                             int newX = x + dx[d];
                             int newY = y + dy[d];
-
-                            // Проверка на границы поля
+    
                             if (newX >= 0 && newX < 8 && newY >= 0 && newY < 8)
                             {
                                 if (batleField[newX, newY] == -1)
@@ -89,8 +80,6 @@ namespace ConsoleApp_Study
                         batleField[x, y] = count;
                     }
                 }
-
-                //----------------------------------------------------------------------------------
 
                 Console.CursorVisible = false;
 
@@ -115,9 +104,8 @@ namespace ConsoleApp_Study
                 int countMine = 0;
                 int countWin = 0;
 
-                while (crash == true)
+                while (crash)
                 {
-
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.SetCursorPosition(0, 0);

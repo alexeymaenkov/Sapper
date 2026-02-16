@@ -6,39 +6,49 @@
         {
             Random random = new();
 
-            int battlefieldSizeX;
-            int battlefieldSizeY;
+            const int COMMAND_SMALL_SIZE = 1;
+            const int COMMAND_MEDIUM_SIZE = 2;
+            const int COMMAND_LARGE_SIZE = 3;
+
+            int battlefieldSizeX = 0;
+            int battlefieldSizeY = 0;
             
-            Console.Write("Введите ширину поля (от 10 до 40): ");
-            int tempBattlefieldSizeY = Convert.ToInt32(Console.ReadLine());
-            
-            Console.Write("Введите высоту поля (от 10 до 40): ");
-            int tempBattlefieldSizeX = Convert.ToInt32(Console.ReadLine());
-            
-            if (tempBattlefieldSizeX < 10)
+            bool sizeChoise = true;
+
+            while (sizeChoise)
             {
-                battlefieldSizeX = 10;
-            }
-            else if (tempBattlefieldSizeX > 40)
-            {
-                battlefieldSizeX = 40;
-            }
-            else
-            {
-                battlefieldSizeX = tempBattlefieldSizeX;
-            }
-            
-            if (tempBattlefieldSizeY < 10)
-            {
-                battlefieldSizeY = 10;
-            }
-            else if (tempBattlefieldSizeY > 40)
-            {
-                battlefieldSizeY = 40;
-            }
-            else
-            {
-                battlefieldSizeY = tempBattlefieldSizeY;
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Добро пожаловать в игру САПЕР!");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"{COMMAND_SMALL_SIZE} - 10x10 клеток.");
+                Console.WriteLine($"{COMMAND_MEDIUM_SIZE} - 15x15 клеток.");
+                Console.WriteLine($"{COMMAND_LARGE_SIZE} - 20x20 клеток.");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.Write("Выберите размер поля: ");
+                int userInput = Convert.ToInt32(Console.ReadLine());
+
+                switch (userInput)
+                {
+                    case COMMAND_SMALL_SIZE:
+                        battlefieldSizeX = 10;
+                        battlefieldSizeY = 10;
+                        sizeChoise = false;
+                        break;
+                    case COMMAND_MEDIUM_SIZE:
+                        battlefieldSizeX = 15;
+                        battlefieldSizeY = 15;
+                        sizeChoise = false;
+                        break;
+                    case COMMAND_LARGE_SIZE:
+                        battlefieldSizeX = 20;
+                        battlefieldSizeY = 20;
+                        sizeChoise = false;
+                        break;
+                    default:
+                        Console.WriteLine("Неправильно введена команда!");
+                        break;
+                }
             }
             
             int xMine;
@@ -111,21 +121,6 @@
                 Console.ResetColor();
 
                 Console.CursorVisible = false;
-                /*
-                char[,] map =
-                {
-                    { '-', '-', '-', '-', '-', '-', '-', '-', '-', '-' },
-                    { '|', '*', '*', '*', '*', '*', '*', '*', '*', '|' },
-                    { '|', '*', '*', '*', '*', '*', '*', '*', '*', '|' },
-                    { '|', '*', '*', '*', '*', '*', '*', '*', '*', '|' },
-                    { '|', '*', '*', '*', '*', '*', '*', '*', '*', '|' },
-                    { '|', '*', '*', '*', '*', '*', '*', '*', '*', '|' },
-                    { '|', '*', '*', '*', '*', '*', '*', '*', '*', '|' },
-                    { '|', '*', '*', '*', '*', '*', '*', '*', '*', '|' },
-                    { '|', '*', '*', '*', '*', '*', '*', '*', '*', '|' },
-                    { '-', '-', '-', '-', '-', '-', '-', '-', '-', '-' },
-                };
-                */
                 
                 char[,] map = GetMap(battlefieldSizeX + 2, battlefieldSizeY + 2);
                 
@@ -139,16 +134,7 @@
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.SetCursorPosition(0, 0);
-                    /*
-                    for (int i = 0; i < map.GetLength(0); i++)
-                    {
-                        for (int j = 0; j < map.GetLength(1); j++)
-                        {
-                            Console.Write(map[i, j]);
-                        }
-                        Console.WriteLine();
-                    }
-                    */
+                    
                     DrawMap(map);
                     Console.ResetColor();
 
@@ -157,7 +143,7 @@
                     Console.Write(" ");
                     Console.ResetColor();
 
-                    Console.SetCursorPosition(0, battlefieldSizeX + 3);
+                    Console.SetCursorPosition(battlefieldSizeY + 4, 9);
                     Console.WriteLine($"Найдено МИН: {countMine}");
 
                     ConsoleKeyInfo charKey = Console.ReadKey();
@@ -275,7 +261,6 @@
                 Console.ResetColor();
             }
         }
-
         private static char[,] GetMap(int x, int y)
         {
             char border = '#';

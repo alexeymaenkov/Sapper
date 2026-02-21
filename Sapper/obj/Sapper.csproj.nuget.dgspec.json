@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "S:\\C#\\C#_Project\\Sapper\\Sapper\\Sapper.csproj": {}
+    "S:\\RIDER#\\Sapper\\Sapper\\Sapper.csproj": {}
   },
   "projects": {
-    "S:\\C#\\C#_Project\\Sapper\\Sapper\\Sapper.csproj": {
+    "S:\\RIDER#\\Sapper\\Sapper\\Sapper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "S:\\C#\\C#_Project\\Sapper\\Sapper\\Sapper.csproj",
+        "projectUniqueName": "S:\\RIDER#\\Sapper\\Sapper\\Sapper.csproj",
         "projectName": "Sapper",
-        "projectPath": "S:\\C#\\C#_Project\\Sapper\\Sapper\\Sapper.csproj",
+        "projectPath": "S:\\RIDER#\\Sapper\\Sapper\\Sapper.csproj",
         "packagesPath": "C:\\Users\\Aorus 17X AXF\\.nuget\\packages\\",
-        "outputPath": "S:\\C#\\C#_Project\\Sapper\\Sapper\\obj\\",
+        "outputPath": "S:\\RIDER#\\Sapper\\Sapper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
